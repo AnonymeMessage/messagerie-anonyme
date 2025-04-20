@@ -1,9 +1,9 @@
 const SERVER_URL = "https://a40ed1ee-c227-4be7-be0d-df17cfc36f5e-00-2xjlwes2k0pyh.janeway.replit.dev";
+const CORRECT_PASSWORD = "&X9r@z!Vq#7^BdW";
 let motDePasse = "";
 let decrypterActif = false;
 
-const MESSAGE_TEST_CHIFFRE = "UWJZUUZXXUI=";
-
+// Algorithme de cryptage/décryptage maison
 function customEncrypt(text, key) {
   let result = "";
   for (let i = 0; i < text.length; i++) {
@@ -30,34 +30,18 @@ function customDecrypt(base64, key) {
 }
 
 document.getElementById("passwordInput").addEventListener("input", (e) => {
-  const password = e.target.value;
-
-  fetch(SERVER_URL + "/verify-password", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ password })
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        motDePasse = password;
-        decrypterActif = true;
-      } else {
-        decrypterActif = false;
-        motDePasse = "";
-      }
-      chargerMessages();
-    })
-    .catch(err => {
-      alert("Mot de passe incorrect");
-      decrypterActif = false;
-    });
+  motDePasse = e.target.value;
+  decrypterActif = motDePasse === CORRECT_PASSWORD;
+  chargerMessages(); // recharge avec ou sans décryptage
 });
 
 function envoyer() {
   const msg = document.getElementById("message").value.trim();
   if (!msg) return alert("Message vide");
-  if (!decrypterActif || !motDePasse) return alert("Mot de passe requis ou incorrect.");
+
+  if (!motDePasse || motDePasse !== CORRECT_PASSWORD) {
+    return alert("Mot de passe requis ou incorrect pour envoyer.");
+  }
 
   const encrypted = customEncrypt(msg, motDePasse);
 
