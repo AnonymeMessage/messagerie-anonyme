@@ -1,4 +1,4 @@
-const SERVER_URL = "https://a40ed1ee-c227-4be7-be0d-df17cfc36f5e-00-2xjlwes2k0pyh.janeway.replit.dev/"; // adresse Replit (on la crée juste après)
+const SERVER_URL = "https://a40ed1ee-c227-4be7-be0d-df17cfc36f5e-00-2xjlwes2k0pyh.janeway.replit.dev"; // adresse Replit (on la crée juste après)
 
 function envoyer() {
   const msg = document.getElementById("message").value.trim();
