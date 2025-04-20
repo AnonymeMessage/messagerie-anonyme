@@ -1,17 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <title>Messagerie Anonyme</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
 </head>
 <body>
-  <h1>Messagerie Anonyme</h1>
+  <div class="top-bar">
+    <div class="counter">
+      👥 Utilisateurs : <span id="user-count">0</span>
+    </div>
+    <div class="cryptage-toggle">
+      🔒 Cryptage
+      <input type="password" id="passwordInput" placeholder="Mot de passe" />
+    </div>
+  </div>
 
-  <textarea id="message" placeholder="Collez ici un message déjà chiffré..."></textarea><br>
-  <button onclick="envoyer()">Envoyer</button>
+  <div class="container">
+    <h1>Messagerie Anonyme</h1>
 
-  <h2>Messages reçus</h2>
-  <div id="messages"></div>
+    <textarea id="message" placeholder="Tapez ou collez ici votre message..."></textarea>
+    <div class="buttons">
+      <button onclick="envoyer()">📤 Envoyer</button>
+      <button class="danger" onclick="viderChat()">🗑️ Vider le chat</button>
+    </div>
+
+    <h2>Messages reçus</h2>
+    <div id="messages"></div>
+  </div>
 
   <script src="script.js"></script>
 </body>

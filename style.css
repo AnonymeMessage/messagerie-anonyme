@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  background: radial-gradient(circle at top left, #0f0f10, #090909);
+  color: #e0e0e0;
+  padding: 0;
+}
+
+/* Top bar (compteur + champ mot de passe) */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 20px;
+  background: #111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  border-bottom: 1px solid #222;
+  box-shadow: 0 0 12px rgba(0, 255, 170, 0.1);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.counter, .cryptage-toggle {
+  font-size: 14px;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#passwordInput {
+  background: #1c1c1c;
+  color: #fff;
+  border: 1px solid #333;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: inherit;
+  transition: border 0.2s;
+  max-width: 200px;
+}
+
+#passwordInput:focus {
+  border-color: #00ffc3;
+  outline: none;
+}
+
+/* Conteneur principal */
+.container {
+  max-width: 700px;
+  margin: 100px auto 40px;
+  padding: 30px;
+  background-color: #121212;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 255, 170, 0.05);
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Champ de texte */
+textarea {
+  width: 100%;
+  height: 100px;
+  background-color: #181818;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 12px;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 20px;
+}
+
+/* Boutons */
+.buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #00ffc3, #0077ff);
+  color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 255, 170, 0.25);
+}
+
+button.danger {
+  background: linear-gradient(135deg, #ff4e4e, #ff7b00);
+  color: #fff;
+}
+
+button.danger:hover {
+  box-shadow: 0 5px 20px rgba(255, 70, 70, 0.25);
+}
+
+/* Messages */
+#messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.message {
+  background-color: #1d1d1d;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.07);
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Responsive : pour petits écrans */
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .container {
+    margin: 120px 10px 30px;
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+    text-align: center;
+  }
+
+  textarea {
+    height: 120px;
+  }
+
+  #passwordInput {
+    width: 100%;
+    max-width: none;
+  }
+}
